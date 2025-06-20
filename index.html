@@ -1,0 +1,451 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aviraj Saha Blog</title>
+  <script>
+  const toggleBtn = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  toggleBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    // Optional: animate hamburger into “X”
+    toggleBtn.classList.toggle('active');
+  });
+  </script>
+  <style>
+    /* Color Palette */
+    :root {
+      --primary: #0D1B2A;       /* Deep Navy Blue */
+      --secondary: #00BFA6;     /* Electric Teal */
+      --neutral-bg: #F5F7FA;    /* Off-White */
+      --text: #333333;          /* Dark Gray */
+      --accent: #FF6F61;        /* Warm Coral Orange */
+      --trust: #6CA0DC;         /* Soft Sky Blue */
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: url(''); /* Replace with your path */
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-color: var(--neutral-bg);
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--neutral-bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .landing-page {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 60px auto;
+      gap: 48px;
+      padding: 0 20px;
+    }
+
+    /* Left Column: Profile Card */
+    .author-profile {
+      flex: 1;
+      min-width: 300px;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .author-img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid var(--secondary);
+      box-shadow: 0 0 12px var(--secondary);
+      margin-bottom: 16px;
+    }
+
+    .author-name {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0;
+    }
+
+    .author-title {
+      font-size: 16px;
+      color: var(--trust);
+      margin: 8px 0;
+    }
+
+    .author-intro {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .social-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--secondary);
+      transition: fill 0.3s ease;
+    }
+
+    .social-icon:hover svg {
+      fill: var(--accent);
+    }
+
+    .rss-btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+    .portfolio-btn {
+      display: inline-block;
+      background-color: var(--primary);
+      color: white;
+      font-weight: 600;
+      padding: 8px 16px;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+
+    .rss-btn:hover {
+      background-color: var(--secondary);
+    }
+
+    .portfolio-btn:hover {
+      background-color: var(--secondary);
+    }
+    /* Right Column: Blog Feed */
+    .blog-feed {
+      flex: 2;
+      min-width: 300px;
+      max-height: 600px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      padding-right: 10px;
+      scroll-behavior: smooth;
+    }
+
+    .blog-card {
+      background-color: white;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      border-left: 4px solid var(--secondary);
+      transition: border-color 0.3s ease;
+    }
+
+    .blog-card:hover {
+      border-color: var(--accent);
+    }
+
+    .post-title {
+      font-size: 18px;
+      margin: 0 0 8px;
+      color: var(--primary);
+    }
+
+    .post-excerpt {
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 12px;
+    }
+
+    .read-more {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--secondary);
+      text-decoration: none;
+    }
+
+    .read-more:hover {
+      color: var(--accent);
+    }
+
+    /* Scrollbar Styling */
+    .blog-feed::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .blog-feed::-webkit-scrollbar-thumb {
+      background-color: var(--secondary);
+      border-radius: 4px;
+    }
+
+    .blog-feed::-webkit-scrollbar-thumb:hover {
+      background-color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .landing-page {
+        flex-direction: column;
+        margin-top: 40px;
+      }
+
+      .author-profile, .blog-feed {
+        width: 100%;
+        padding-left: 0px;
+      }
+
+      .blog-feed {
+        max-height: none;
+      }
+    }
+.profile-label {
+  padding-top: 0px;
+  padding-bottom: 30px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--primary);
+  margin-bottom: 12px;
+
+}
+    /* Nav Container */
+.blog-nav {
+  background-color: var(--primary);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.blog-nav .nav-container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 12px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Logo/Title */
+.nav-logo {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--secondary);
+}
+
+/* Links */
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: var(--secondary);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a:focus {
+  color: var(--accent);
+  outline: none;
+}
+
+/* Hamburger */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background-color: var(--secondary);
+  transition: all 0.3s ease;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--primary);
+    flex-direction: column;
+    align-items: flex-start;
+    width: 200px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    border-bottom-left-radius: 12px;
+  }
+
+  .nav-links.open {
+    max-height: 300px; /* Enough to show all links */
+  }
+
+  .nav-links li {
+    width: 100%;
+  }
+
+  .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <nav class="blog-nav">
+  <div class="nav-container">
+    <div class="nav-logo">Aviraj’s Blog</div>
+    <button class="nav-toggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="https://medium.com/@avirajsaha" target="_blank" rel="noopener">Medium</a></li>
+      <li><a href="https://dev.to/avirajsaha" target="_blank" rel="noopener">Dev.to</a></li>
+      <li><a href="https://hashnode.com/@avirajsaha" target="_blank" rel="noopener">Hashnode</a></li>
+    </ul>
+  </div>
+</nav>
+
+  <section class="landing-page">
+    <!-- Profile Card -->
+    <div class="author-profile">
+        <div class="profile-label">Author</div>
+      <img src="./media/headshot_avirajsaha.jpg" alt="Aviraj Saha" class="author-img" />
+      <h1 class="author-name">Aviraj Saha</h1>
+      <p class="author-title">Your source for latest tech</p>
+      <p class="author-intro">Follow me on:</p>
+
+      <div class="social-links">
+        <a href="#" class="social-icon" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0a12 12 0 00-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.5-4-1.5-.6-1.3-1.5-1.6-1.5-1.6-1.2-.9.1-.9.1-.9 1.3.1 2 1.3 2 1.3 1.2 2 3.2 1.5 4 .9.1-.9.5-1.5.9-1.8-2.7-.3-5.5-1.3-5.5-6a4.7 4.7 0 011.2-3.2 4.3 4.3 0 01.1-3.1s1-.3 3.3 1.2a11.6 11.6 0 016 0c2.3-1.5 3.3-1.2 3.3-1.2a4.3 4.3 0 01.1 3.1 4.7 4.7 0 011.2 3.2c0 4.7-2.8 5.7-5.5 6a2 2 0 01.6 1.5v2.2c0 .3.2.7.8.6A12 12 0 0012 0z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M19 0h-14a5 5 0 00-5 5v14a5 5 0 005 5h14a5 5 0 005-5v-14a5 5 0 00-5-5zm-11 20h-3v-11h3v11zm-1.5-12.3a1.8 1.8 0 110-3.6 1.8 1.8 0 010 3.6zm13.5 12.3h-3v-5.6c0-1.3-.5-2.2-1.7-2.2s-1.8.9-1.8 2.1v5.7h-3v-11h3v1.5c.4-.6 1.2-1.4 2.9-1.4 2.1 0 3.6 1.3 3.6 4.1v6.8z"/></svg>
+        </a>
+        <a href="#" class="social-icon" aria-label="Twitter">
+          <svg viewBox="0 0 24 24"><path d="M24 4.6a9.6 9.6 0 01-2.8.8 4.7 4.7 0 002-2.6 9.4 9.4 0 01-3 1.2 4.7 4.7 0 00-8 4.3A13.4 13.4 0 011.6 3.1a4.7 4.7 0 001.5 6.2 4.7 4.7 0 01-2.1-.6v.1a4.7 4.7 0 003.8 4.6 4.7 4.7 0 01-2.1.1 4.7 4.7 0 004.4 3.3A9.4 9.4 0 010 19.5a13.3 13.3 0 007.2 2.1c8.6 0 13.3-7.1 13.3-13.3 0-.2 0-.4 0-.5A9.4 9.4 0 0024 4.6z"/></svg>
+        </a>
+      </div>
+
+      <a href="/rss.xml" class="rss-btn">Subscribe via RSS</a>
+      <a href="/rss.xml" class="portfolio-btn">Portfolio</a>
+    </div>
+
+    <!-- Blog Feed -->
+    <div class="blog-feed" id="blog-feed">
+
+      <div class="blog-card">
+        <h2 class="post-title">Sample Blog Post</h2>
+        <p class="post-excerpt">A brief overview of why I started this blog and what you'll find here.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+      <!-- Sample Posts -->
+      <!--
+      <div class="blog-card">
+        <h2 class="post-title">Introducing My Blog</h2>
+        <p class="post-excerpt">A brief overview of why I started this blog and what you'll find here.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">Dockerizing ML Projects</h2>
+        <p class="post-excerpt">How to containerize your machine learning projects for consistent deployment.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+
+      <div class="blog-card">
+        <h2 class="post-title">GitHub Actions for Beginners</h2>
+        <p class="post-excerpt">Learn how to automate tasks in your workflow using GitHub Actions.</p>
+        <a href="#" class="read-more">Read More →</a>
+      </div>
+      -->
+      <!-- Add more blog posts here -->
+    </div>
+  </section>
+</body>
+</html>
